@@ -1,0 +1,674 @@
+.Dicon {
+	color: #D6E2E1;
+}
+
+.navbar-brand {
+	padding-top: 12px;
+}
+
+.aw-link-panel {
+	float: right;
+	padding: 0px;
+}
+
+.aw-titulo-panel {
+	float: left;
+	padding-top: 2px;
+	color: #ffffff
+}
+
+.panel-default>.panel-heading {
+	background-color: #D6E2E1;
+	margin-top: 49px;
+}
+
+.panel-primary>.panel-heading {
+	margin-top: 50px;
+}
+
+.navbar-inverse {
+	background-color: #444444;
+	border-color: #000000;
+}
+
+.navbar-brand img {
+	margin-left: 0;
+	margin-bottom: 15px;
+	height: 30px;
+}
+
+#pageNav {
+	margin: 0;
+	float: left;
+}
+
+#logo {
+	margin-top: -5px;
+	margin-left: 15px;
+}
+
+/*Grid*/
+#example_length {
+	padding: 18px;
+	float: right
+}
+
+#example_filter {
+	padding: 7px;
+	float: left;
+}
+
+#busca {
+	width: 650px
+}
+
+#example_paginate {
+	margin-top: 3px;
+	float: right;
+	margin-right: 30px;
+}
+
+#example_paginate span {
+	padding: 7px
+}
+
+#example_paginate span a {
+	padding: 5px
+}
+
+#example_info {
+	float: left;
+	color: #337ab7;
+}
+
+#msgGeral {
+	margin-top: 52px;
+	margin-bottom: -77px;
+	position: relative;
+}
+
+#msgError {
+	margin-top: 52px;
+	margin-bottom: -77px;
+	position: relative;
+}
+
+#DashboardBtnPrincipal {
+	margin: 10px;
+}
+
+.panel-primary .panel-heading {
+	background: #337ab7 url(../images/header-bg.jpg) 0 0 repeat-x !important;
+}
+
+/*login*/
+.login-page #logo img {
+	width: 60px
+}
+
+.borderLinha {
+	border-bottom: 1px solid #dad9d9;
+}
+
+/*Error 403*/
+#error403 {
+	margin-top: 5%;
+}
+
+/*Error 500*/
+#error500 {
+	margin-top: 5%;
+}
+
+/*caixa de Detalhes*/
+.detalhes {
+	color: #636763;
+	background-color: #f7f5f533;
+	border-color: #e6e6e6;
+}
+
+#tbdescricao {
+	display: none;
+}
+
+#tbdtaPrevista {
+	display: none;
+}
+
+#tbdtaFinal {
+	display: none;
+}
+
+#tbHorasDetalhe {
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+#print {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px !important;
+}
+
+#tbn-nav-new {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#btns_detalhe {
+	background-color: #f1f1f1;
+	padding: 7px;
+}
+
+.text-primary {
+	color: #337ab7;
+	margin: 4px !important;
+}
+
+/*------------------------------------------*\
+  Box
+  - Para ser usado em indicadores (dahboard)
+\*------------------------------------------*/
+.aw-box {
+	padding: 20px;
+	margin-bottom: 15px;
+	border: 1px solid #eeeeee;
+	border-bottom: 3px solid #1e94d2;
+}
+
+.aw-box__icon {
+	float: left;
+	color: #1e94d2;
+}
+
+.aw-box__value {
+	font-size: 1.69em;
+	font-weight: 300;
+	text-align: right;
+}
+
+.aw-box__title {
+	display: block;
+	font-size: 1em;
+	font-weight: 600;
+	text-align: right;
+}
+/*-------------------------------------------------*\
+  Graph box
+  - Container para grÃ¡fico (dashboard)
+\*-------------------------------------------------*/
+.aw-graph-box {
+	margin-bottom: 15px;
+	border: 1px solid #eeeeee;
+	border-bottom: 3px solid #eeeeee;
+}
+
+.aw-graph-box__header {
+	padding: 15px 0px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.aw-graph-box__content {
+	padding: 15px 20px;
+}
+
+.aw-graph-box__no-data {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	color: #777777;
+}
+
+.aw-graph-box__no-data>i {
+	margin-right: 5px;
+}
+
+.aw-graph-box__title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.1em;
+	font-weight: 500;
+}
+
+.aw-text-xs-left {
+	text-align: left;
+}
+
+.aw-text-xs-right {
+	text-align: right;
+}
+
+.aw-text-xs-center {
+	text-align: center;
+}
+
+.aw-text-xs-justify {
+	text-align: justify;
+}
+
+#DashboardBtnPrincipal a {
+	text-decoration: none;
+}
+
+/* modal */
+@media ( min-width : 768px)bootstrap.min.css:5.modal-dialog {
+	width
+	
+	
+	:
+	
+	 
+	
+	900
+	px
+	
+	
+	;
+	margin
+	
+	
+	:
+	
+	 
+	
+	30
+	px
+	
+	 
+	
+	auto
+	
+	
+	;
+}
+
+/* -----------------------------------------------[Configuração Responsiva]------------------------------------------------- */
+/*Iphone 5 320px*/
+@media ( min-width : 480px) and (max-width: 768px) {
+	.container-fluid {
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+	#logo {
+		margin-top: -4px;
+	}
+	.navbar {
+		position: relative;
+		min-height: 50px;
+		margin-bottom: -2px !important;
+		border: 1px solid transparent;
+	}
+	.panel-primary>.panel-heading {
+		margin-top: 49px;
+	}
+	#example_length {
+		display: none;
+	}
+	#busca {
+		width: 259px;
+	}
+	#example_filter span {
+		display: none;
+	}
+	#example_filter {
+		float: inherit;
+		padding-top: 17px;
+	}
+	#example_info {
+		display: none;
+	}
+	#example_paginate {
+		float: inherit;
+		padding: 15px;
+	}
+	.navbar-brand img {
+		margin-left: 0px
+	}
+	#datahora {
+		padding: 7px 11px 0 0;
+		float: right
+	}
+	#datahora p {
+		padding: 0px;
+		margin-bottom: -8px;
+		font-size: 9px
+	}
+
+	/*campos ocultados da grid responsiva*/
+	#tbacao {
+		display: none;
+	}
+	#tbtipo {
+		display: none;
+	}
+	#tbstatus {
+		display: none;
+	}
+	#tbinterno {
+		display: none;
+	}
+	#tbcliente {
+		display: none;
+	}
+	#tbdcr {
+		display: none;
+	}
+	#tbdtaInicial {
+		display: none;
+	}
+	#tbdescricao {
+		display: none;
+	}
+	#tbdtaPrevista {
+		display: none;
+	}
+	#tbdtaFinal {
+		display: none;
+	}
+	#RP_acao {
+		
+	}
+	#RP_id {
+		display: none;
+	}
+	#RP_responsavel {
+		
+	}
+	#RPemail {
+		display: none;
+	}
+	#HSListDatal {
+		
+	}
+	#HSListDescricao {
+		
+	}
+	#HSListCdTask {
+		
+	}
+	#HSListResponsavel {
+		display: none;
+	}
+	#HSListHoras {
+		display: none;
+	}
+	#HSListacao {
+		display: none;
+	}
+	#tempo {
+		display: none;
+	}
+	.login-page {
+		width: 270px;
+		padding: 8% 0 0;
+		margin: auto;
+	}
+	.copyright {
+		display: none;
+	}
+	#graficos {
+		display: none;
+	}
+	#jsHoraAtul {
+		display: none;
+	}
+}
+/*End*/
+
+/*Galax 360 px*/
+@media ( min-width : 320px) and (max-width : 480px) {
+	#logo {
+		margin-top: -4px;
+	}
+	.navbar {
+		position: relative;
+		min-height: 50px;
+		margin-bottom: -2px !important;
+		border: 1px solid transparent;
+	}
+	.panel-primary>.panel-heading {
+		margin-top: 49px;
+	}
+	#example_length {
+		display: none;
+	}
+	#busca {
+		width: 259px;
+	}
+	#example_filter span {
+		display: none;
+	}
+	#example_filter {
+		float: inherit;
+		padding-top: 17px;
+	}
+	#example_info {
+		display: none;
+	}
+	#example_paginate {
+		float: inherit;
+		padding: 15px;
+	}
+	.navbar-brand img {
+		margin-left: 0px
+	}
+	#datahora {
+		padding: 7px 11px 0 0;
+		float: right
+	}
+	#datahora p {
+		padding: 0px;
+		margin-bottom: -8px;
+		font-size: 9px
+	}
+
+	/*campos ocultados da grid responsiva*/
+	#tbacao {
+		display: none;
+	}
+	#tbtipo {
+		display: none;
+	}
+	#tbstatus {
+		display: none;
+	}
+	#tbinterno {
+		display: none;
+	}
+	#tbcliente {
+		display: none;
+	}
+	#tbdcr {
+		display: none;
+	}
+	#tbdtaInicial {
+		display: none;
+	}
+	#tbdescricao {
+		display: none;
+	}
+	#tbdtaPrevista {
+		display: none;
+	}
+	#tbdtaFinal {
+		display: none;
+	}
+	#RP_acao {
+		
+	}
+	#RP_id {
+		display: none;
+	}
+	#RP_responsavel {
+		
+	}
+	#RPemail {
+		display: none;
+	}
+	#HSListDatal {
+		
+	}
+	#HSListDescricao {
+		
+	}
+	#HSListCdTask {
+		
+	}
+	#HSListResponsavel {
+		display: none;
+	}
+	#HSListHoras {
+		display: none;
+	}
+	#HSListacao {
+		display: none;
+	}
+	#tempo {
+		display: none;
+	}
+	.login-page {
+		width: 270px;
+		padding: 8% 0 0;
+		margin: auto;
+	}
+	.copyright {
+		display: none;
+	}
+	#graficos {
+		display: none;
+	}
+	#jsHoraAtul {
+		display: none;
+	}
+}
+/*End*/
+@media ( min-width : 200px) and (max-width : 320px) {
+	#logo {
+		margin-top: -4px;
+	}
+	.navbar {
+		position: relative;
+		min-height: 50px;
+		margin-bottom: -2px !important;
+		border: 1px solid transparent;
+	}
+	.panel-primary>.panel-heading {
+		margin-top: 49px;
+	}
+	#example_length {
+		display: none;
+	}
+	#busca {
+		width: 259px;
+	}
+	#example_filter span {
+		display: none;
+	}
+	#example_filter {
+		float: inherit;
+		padding-top: 17px;
+	}
+	#example_info {
+		display: none;
+	}
+	#example_paginate {
+		float: inherit;
+		padding: 15px;
+	}
+	.navbar-brand img {
+		margin-left: 0px
+	}
+	#datahora {
+		padding: 7px 11px 0 0;
+		float: right
+	}
+	#datahora p {
+		padding: 0px;
+		margin-bottom: -8px;
+		font-size: 9px
+	}
+
+	/*campos ocultados da grid responsiva*/
+	#tbacao {
+		display: none;
+	}
+	#tbtipo {
+		display: none;
+	}
+	#tbstatus {
+		display: none;
+	}
+	#tbinterno {
+		display: none;
+	}
+	#tbcliente {
+		display: none;
+	}
+	#tbdcr {
+		display: none;
+	}
+	#tbdtaInicial {
+		display: none;
+	}
+	#tbdescricao {
+		display: none;
+	}
+	#tbdtaPrevista {
+		display: none;
+	}
+	#tbdtaFinal {
+		display: none;
+	}
+	#RP_acao {
+		
+	}
+	#RP_id {
+		display: none;
+	}
+	#RP_responsavel {
+		
+	}
+	#RPemail {
+		display: none;
+	}
+	#HSListDatal {
+		
+	}
+	#HSListDescricao {
+		
+	}
+	#HSListCdTask {
+		
+	}
+	#HSListResponsavel {
+		display: none;
+	}
+	#HSListHoras {
+		display: none;
+	}
+	#HSListacao {
+		display: none;
+	}
+	#tempo {
+		display: none;
+	}
+	.login-page {
+		width: 270px;
+		padding: 8% 0 0;
+		margin: auto;
+	}
+	.copyright {
+		display: none;
+	}
+	#graficos {
+		display: none;
+	}
+	#jsHoraAtul {
+		display: none;
+	}
+} /*End*/

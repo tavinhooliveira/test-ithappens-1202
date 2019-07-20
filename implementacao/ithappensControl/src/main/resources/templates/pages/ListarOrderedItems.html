@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}">
+	
+<section layout:fragment="conteudo">
+
+<div th:replace="/layout/MensagemGeral :: alert"></div>
+
+<div class="panel panel-primary" >
+		<div class="panel-heading">
+			<div class="clearfix" id="btn_Nave">
+				<h1 class="panel-title aw-titulo-panel">Pedidos</h1>				
+				<a class="btn btn-default pull-right" th:href="@{/ithappens}">
+				<span class="glyphicon glyphicon-search"></span>Listar Vendas</a>
+			</div>
+		</div>
+	<div class="panel-body">
+   		
+	   		<div class="table-responsive">
+		   		<table id="tabela" class="table table-striped table-bordered dt-responsive table-hover" >
+		   			<thead>
+		   				<tr>
+		   					<th id="HSDatal" class="text-left col-md-1">Codigo<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="HSDescricao" class="text-left">Cod. Produto<input type="text" class="form-control" id="txtColuna2"/></th>
+		   					<th id="HSCdTask" class="text-left ">Qtd. Produto<input type="text" class="form-control" id="txtColuna3"/></th>
+		   					<th id="HSOrderedItems" class="text-left ">Valor Total<input type="text" class="form-control" id="txtColuna4"/></th>
+		   					<th id="HSResponsavel" class="text-left">Status<input type="text" class="form-control" id="txtColuna5"/></th>	   				
+		   					<th id="HSacao" class="text-center col-md-1">Ação</th>
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="orderedItem : ${orderedItems}"> 							   						   					
+		   					<td id="HSData" class="text-left" th:text="${{orderedItem.codigo}}"></td>
+		   					<td id="HSDescricao"><a class="text-left" ></a></td>
+		   					<td id="HSCdTask"> <a class="text-left"   th:text="${{orderedItem.qtdProduct}}"></a></td>
+		   					<td id="HSDescricao"><a class="text-left" th:text="${{orderedItem.totalValue}}"></a></td>
+		   					<td id="HSCdTask"> <a class="text-left"   th:text="${{orderedItem.status}}"></a></td>
+		   					<td id="HSacao" class="text-center">
+		   						<a class="btn btn-link btn-xs"
+		   								title="Excluir" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   						<a class="btn btn-link btn-xs"
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   					</td>
+		   				</tr>
+		   				<tr>					   				
+	   						<td colspan="6" th:if="${#lists.isEmpty(orderedItems)}">Nehuma pedido cadastrada para essa Venda!</td>
+	   					</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>
+
+</div>
+</section>
+</html>

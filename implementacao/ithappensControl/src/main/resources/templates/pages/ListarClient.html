@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<section layout:fragment="conteudo">
+
+<div th:replace="/layout/MensagemGeral :: alert"></div>
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="clearfix" id="btn_Nave">
+				<h1 class="panel-title aw-titulo-panel">Clientes</h1>				
+				<!--Novo-->
+				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroClientModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
+					title="Nova Venda"  data-placement="top">
+					<span class="glyphicon glyphicon-plus-sign"></span>Novo
+				</a>
+			</div>
+		</div>
+	<div class="panel-body">
+   		
+	   		<div class="table-responsive">
+		   		<table id="example" class="table table-striped table-bordered dt-responsive table-hover" >
+		   			<thead>
+		   				<tr>
+		   					<th id="RP_acao" class="text-center col-md-1">Ação</th>
+		   					<th id="RP_responsavel" class="text-left">Cliente</th>
+		   					<th id="RPemail" class="text-left">Email</th>	   				
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="client : ${clients}"> 							   						   					
+		   					<td id="RP_acao" class="text-center">
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/client/{codigo}(codigo=${client.codigo})}" 
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/client/delete/{codigo}(codigo=${client.codigo})}"
+		   								title="Excluir" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   					</td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${client.nome}"></td>
+		   					<td id="RPemail" class="text-left" th:text="${client.email}"></td>
+		   				</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>
+
+</div>
+</section>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}">
+<section layout:fragment="conteudo">
+<div class="modal fade" id="cadastroBranchModal" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="cadastroBranch-modal">
+	<div class="modal-dialog">
+		<form class="form-horizontal" method="POST" th:action="@{/ithappens/branch}" th:object="${branch}">			
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Cadastrar Filiais</h4>
+				</div>				
+				<div class="modal-body">
+			
+				<div class="form-group">			
+					<div class="col-md-12">
+						<label for="nome" class="control-label">Filial:</label>
+						<input type="text" class="form-control text-uppercase" id="nome" name="nome"/>
+					</div>
+					<div class="col-md-12">
+						<label for="cnpj" class="control-label">CNPJ:</label>
+						<input type="text" class="form-control text-uppercase" id="cnpj" name="cnpj"/>
+					</div>
+					<div class="col-md-12">
+						<label for="city" class="control-label">Cidade:</label>
+						<input type="text" class="form-control text-uppercase" id="city" name="city"/>
+					</div>
+					<div class="col-md-12">
+						<label for="address" class="control-label">Endereço:</label>
+						<input type="text" class="form-control text-uppercase" id="address" name="address"/>
+					</div>
+				</div>	
+										
+				</div>				
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</section>	
+</html>

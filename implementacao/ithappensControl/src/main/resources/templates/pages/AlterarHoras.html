@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/LayoutPadrao}">
+	
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" th:action="@{/ithappens/orderedItems}" th:object="${orderedItem}">
+
+		<div th:replace="/layout/MensagemGeral :: alert"></div>
+		<div th:replace="/layout/MensagemErro :: alert"></div>
+		
+		<div class="panel panel-primary">
+			<div class="panel-heading center">
+				<div class="clearfix">
+					<h1 class="panel-title aw-titulo-panel">Pedidoss</h1>					
+					<a class="btn btn-default pull-right" th:href="@{/ithappens/orderedItems}">
+					<span class="glyphicon glyphicon-search"></span>Listar Pedidoss</a>
+				</div>
+			</div>			
+			<div class="panel-body">
+			
+			<div class=""> <input type="hidden" th:field="*{codigo}" /></div>
+			<div class=""> <input type="hidden" th:field="*{sales}" /></div>
+			
+				<div class="form-group">								
+						<div class="col-md-1">
+							<label for="orderedItems" class="control-label">Pedidoss:</label>
+							<input type="text"  class="form-control block" disabled="disabled" placeholder="0,5"  id="orderedItems" name="orderedItems" th:field="*{orderedItems}"/>
+						</div>
+						
+						<div class="col-md-2">
+						<label for="responsaveis" class="control-label">Usuários:</label>
+						<select class="form-control block" disabled="disabled" name="responsaveis" th:field="*{responsaveis}">
+							<option th:each="responsaveis : ${tdresponsaveis}"  
+								th:value="${responsaveis.codigo}" th:text="${responsaveis.nome}">
+							</option>
+						</select>
+					</div>
+										
+						<div class="col-md-7">
+							<label for="descricao" class="control-label">Descricão:</label>
+							<input type="text" class="form-control text-uppercase block" disabled="disabled" id="descricao" name="descricao" th:field="*{descricao}"/>
+						</div>
+					
+					</div>	
+				</div>
+			
+				<div class="form-group">	
+					<div class="col-md-3">						
+						<a class="btn btn_block glyphicon glyphicon-pencil"  
+							title="Editar Parcela"  rel="tooltip" data-placement="bottom">Editar								
+						</a>
+						<button type="submit" class="btn btn-primary">Salvar</button>
+						<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+					</div>
+				</div>
+			</div>
+	</form>
+</section>
+</html>

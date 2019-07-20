@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<i th:fragment="layout-data-hora">
+<script >
+data = new Date();
+dia = data.getDate();
+mes = data.getMonth();
+ano = data.getFullYear();
+
+meses = new Array(12);
+
+meses[0] = "Janeiro";
+meses[1] = "Fevereiro";
+meses[2] = "Março";
+meses[3] = "Abril";
+meses[4] = "Maio";
+meses[5] = "Junho";
+meses[6] = "Julho";
+meses[7] = "Agosto";
+meses[8] = "Setembro";
+meses[9] = "Outubro";
+meses[10] = "Novembro";
+meses[11] = "Dezembro";
+
+// document.write ("<p> " + data.getHours() + ":" + data.getMinutes()+ " - " + dia + " de " + meses[mes] + " de " + ano +"</p>");
+document.write ("<span class='navbar-brand'>Hoje:"+dia+"-"+meses[mes]+"-"+ano+"</span>");
+</script>
+</i>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>ItHappens Vendas e Estoque</title>
+
+ 	<link rel="stylesheet" type="text/css" th:href="@{/layout/css/login.css}"/>
+  	<link rel="stylesheet" type="text/css" th:href="@{/layout/css/style.css}"/>  
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layout/css/responsive.bootstrap.min.css}"/>
+
+</head>
+
+<body class="aw-layout-simple-page">
+
+	<div class="aw-layout-simple-page__container">
+		<th:block layout:fragment="conteudo"/>
+	</div>
+	
+	<script th:src="@{/layout/js/jquery.min.js}"></script>
+	<script th:src="@{/layout/js/bootstrap.min.js}"></script>
+	<script th:src="@{/layout/js/task.js}"></script>
+  	<script th:src="@{/layout/js/jquery-2.1.4.min.js}"></script>
+
+</body>
+</html>

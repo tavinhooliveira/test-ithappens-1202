@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    layout:decorate="~{layout/layout-simples}">
+	
+<section layout:fragment="conteudo">
+      
+<div class="login-page" id="login">
+  <div class="form">
+  <span id="logo">
+	  <img alt="Ithappens" th:src="@{/layout/images/ithappens.jpg}"/>
+  </span>
+    <form class="login-form" th:action="@{/ithappens/login}" method="POST">
+    	<input type="text" class="" placeholder="Usuário" autofocus="autofocus" name="username"/>
+     	<input type="password" class="" placeholder="Senha" name="password"/>
+      <button type="submit" class="btn btn-primary">login</button>
+      <div class="text-danger  is-error" th:if="${#bools.isTrue(param.error)}">
+		O usuário e/ou senha não conferem
+	  </div>
+      <p class="message">info:<a href="#">Informações de Acesso</a></p>
+    </form>
+    <form class="register-form"  >
+      <p>Ao Ultilizar um acesso do tipo: User, você poderar apenas vizualizar as vendas!</p>
+      <p>Para cadastrar uma nova venda ou alterar, você terá que ultilizar um usuario do tipo: Admim</p>
+		<!--<a th:href="@{/ithappens/login}" class="btn btn-primary">Acesso Comum</a> -->
+      <p class="message">Acesso: <a href="#">Logar</a></p>
+    </form>
+  </div>
+</div>
+	
+</section>
+	 	 
+</html>

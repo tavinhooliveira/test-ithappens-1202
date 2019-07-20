@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<title>Listar Vendas</title>
+<!--script impressão-->
+<script>
+	function cont() {
+		var conteudo = document.getElementById('print').innerHTML, tela_impressao = window
+				.open('about:blank');
+		tela_impressao.document.write(conteudo);
+		tela_impressao.focus();
+		tela_impressao.window.print();
+		tela_impressao.window.close();
+	}
+</script>
+
+
+</head>
+
+<section layout:fragment="conteudo">
+	<div th:replace="/layout/MensagemGeral :: alert"></div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Detalhes da Venda</h1>
+				<a class="btn btn-default pull-right" th:href="@{/ithappens}"
+					title="Listar todas as Sale" rel="tooltip" data-placement="bottom">
+					<span class="glyphicon glyphicon-search"></span>Listar Vendas
+				</a>
+				<!--NovaSale-->
+				<a class="btn btn-success pull-right" id="tbn-nav-new"
+					th:href="@{/ithappens/novo}" sec:authorize="hasRole('ROLE_ADMIN')"
+					title="Nova Sale" rel="tooltip" data-placement="bottom"> <span
+					class="glyphicon glyphicon-plus-sign"></span>Nova Venda
+				</a>
+			</div>
+		</div>
+
+		<div class="panel-body" id="print">
+
+			<div class="col-md-3 alert detalhes ">
+				<div class="col-ms-1">
+					<label>Código: </label><span class="text-primary"
+						th:text="${sale.codigo}"></span>
+				</div>
+
+				<div class="col-ms-1">
+					<label>Tipo: </label><span class="text-primary"
+						th:text="${sale.tipo}"></span>
+				</div>
+				<div class="col-ms-1">
+					<label>Status: </label><strong><span class="text-primary"
+						th:text="${sale.status.descricao}"
+						th:classappend="${sale.open ? 'text-success' : 'text'}"></span></strong>
+				</div>
+
+				<div class="col-ms-1">
+					<label>Data: </label><span class="text-primary"
+						th:text="${{sale.dataOrder}}"></span>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-offset-1 alert detalhes">
+				<div class="pull-right">
+					<!--Imprimir-->
+					<a class="btn btn-default pull-right"> <span
+						class="glyphicon glyphicon-print" title="Imprimir" rel="tooltip"
+						data-placement="bottom" onclick="cont();"></span>
+					</a><br>
+					<br>
+					<br>
+
+					<div class="col-ms-1">
+						<label>Quantidade de items: </label><span class="text-primary"
+							th:text="${sale.descricao}"></span>
+					</div>
+					<div class="col-ms-1">
+						<label>Valor total da venda: </label><span class="text-primary"
+							th:text="${sale.descricao}"></span>
+					</div>
+
+				</div>
+				<div class="col-ms-1">
+					<label>Usuário: </label><span class="text-primary"><a
+						th:text="${{sale.users.nome}}"
+						th:href="@{/ithappens/orderedItems/user/list/{codigo}(codigo=${sale.users.codigo})}">
+					</a></span>
+				</div>
+
+				<div class="col-ms-1">
+					<label>Cliente: </label><span class="text-primary"
+						th:text="${{sale.clients.nome}}"></span>
+				</div>
+				<div class="col-ms-1">
+					<label>Filial:</label><span class="text-primary"
+						th:text="${{sale.branchs.nome}}"></span>
+				</div>
+
+				<div class="col-ms-6">
+					<label>Descrição: </label><span class="text-primary"
+						th:text="${sale.descricao}"></span>
+				</div>
+			</div>
+
+			<div id=" btns_detalhe aw-graph-box" class="col-md-12 pull-left">
+				<!--Salvar e Calcular-->
+				<a class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')"
+					th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
+					title="Editar" rel="tooltip" data-placement="bottom"> <span
+					class="glyphicon glyphicon-pencil"></span><span> Calcular e Salvar</span>
+				</a>
+
+				<!--Editar-->
+				<a class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN')"
+					th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
+					title="Editar" rel="tooltip" data-placement="bottom"> <span
+					class="glyphicon glyphicon-pencil"></span><span> Editar</span>
+				</a>
+				<!--Excluir-->
+				<a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')"
+					data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+					th:attr="data-codigo=${sale.codigo},data-tipo=${sale.tipo}, data-descricao=${sale.descricao}"
+					title="Excluir" rel="tooltip" data-placement="bottom"> <span
+					class="glyphicon glyphicon-trash"></span><span> Excluir</span>
+				</a>
+
+				<!--Processar Venda-->
+				<a class="btn btn-default pull-right"
+					sec:authorize="hasRole('ROLE_ADMIN')"
+					th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
+					title="Editar" rel="tooltip" data-placement="bottom"> <span
+					class="glyphicon glyphicon-pencil text"></span><span> Processar
+						Venda</span>
+				</a>
+			</div>
+		</div>
+
+
+		<section id="navegacao">
+			<br>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab"> <span
+						class="glyphicon glyphicon-shopping-cart text"> </span> <label
+						class="text-label"> Itens do Pedido</label></a></li>
+			</ul>
+			<div class="tab-content">
+
+				<div class="tab-pane active" id="tab1">
+					<div class="panel-body">
+						<div class="panel">
+							<!--Pedidos-->
+							<a class="btn btn-success" data-toggle="modal"
+								data-target="#addOrderedItems"
+								th:attr="data-codigo=${sale.codigo}"
+								title="Lançar Pedidos nessa venda" rel="tooltip"
+								data-placement="bottom"> <span
+								class="glyphicon glyphicon-plus"></span> Add Pedidos
+							</a>
+						</div>
+
+						<!-- tabelas de Pedidoss BEGIN -->
+						<div class="table-responsive">
+							<table id="tbHorasDetalhe" class="table table-hover"
+								th:if="${not  #lists.isEmpty(orderedItems)}">
+								<thead class="table-bordered">
+									<tr>
+										<th id="HSData" class="text-left col-md-1">Cod. Pedido</th>
+										<th id="HSData" class="text-left col-md-1">Cod. Produto</th>
+										<th id="HSData" class="text-left col-md-7">Produto</th>
+										<th id="HSData" class="col-md-1">V. Unitário</th>
+										<th id="HSData" class="col-md-1">Quantidade</th>
+										<th id="HSData" class="col-md-1">V. Pedido</th>
+										<th id="HSAcao"
+											class="text-center col-md-1 glyphicon glyphicon-trash"></th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr th:each="items : ${orderedItems}">
+										<td id="HSData"><a class="text-right "
+											th:text="${items.codigo}"></a></td>
+										<td id="HSData"><a class="text-right "
+											th:text="${items.codigo}"></a></td>
+										<td id="HSData"><a class="text-right "
+											th:text="${items.codigo}"></a></td>
+										<td id="HSData"><a class="text-left "
+											th:text="${items.codigo}"></a></td>
+										<td id="HSData"><a class="text-left "
+											th:text="${items.qtdProduct}"></a></td>
+										<td id="HSData"><a class="text-left "
+											th:text="${items.totalValue}"></a></td>
+										<td id="HSacao" class="text-center"><a
+											class="btn btn-link btn-xs" data-toggle="modal"
+											data-target="#confirmacaoExclusaoHorasModal" title="Excluir"
+											rel="tooltip" data-placement="bottom"> <span
+												class="glyphicon glyphicon-trash"></span>
+										</a></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<span colspan="6" th:if="${#lists.isEmpty(orderedItems)}">Nehuma
+								pedido cadastrada para essa Venda!</span>
+
+						</div>
+						<!-- tabelas de Pedidos END -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div
+			th:replace="pages/CadastroOrderedItemsModal :: addOrderedItems-modal"></div>
+		<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
+		<div
+			th:replace="layout/DialogoConfirmacaoOrderedItemsExclusao :: excluir-orderedItems-modal"></div>
+	</div>
+
+</section>
+</html>
