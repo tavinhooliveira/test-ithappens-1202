@@ -1,5 +1,7 @@
 package com.ithappens.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class OrderedItem {
@@ -15,19 +18,24 @@ public class OrderedItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-
-	private String qtdProduct;
-
-	private String totalValue;
+	
+	private BigDecimal totalValue;
+	
+	private Integer qtdProduct;
 
 	@ManyToOne
 	@JoinColumn(name = "cd_sale")
 	private Sale sales;
+	
+	@ManyToOne
+	@NotNull(message = "O Produto é obrigatório")
+	@JoinColumn(name = "codigo_products")
+	private Product products;
 
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
-	public boolean isOpen() {
+	public boolean isAtivo() {
 		return Status.ATIVO.equals(this.status);
 	}
 
@@ -47,20 +55,20 @@ public class OrderedItem {
 		this.codigo = codigo;
 	}
 
-	public String getQtdProduct() {
-		return qtdProduct;
-	}
-
-	public void setQtdProduct(String qtdProduct) {
-		this.qtdProduct = qtdProduct;
-	}
-
-	public String getTotalValue() {
+	public BigDecimal getTotalValue() {
 		return totalValue;
 	}
 
-	public void setTotalValue(String totalValue) {
+	public void setTotalValue(BigDecimal totalValue) {
 		this.totalValue = totalValue;
+	}
+
+	public Integer getQtdProduct() {
+		return qtdProduct;
+	}
+
+	public void setQtdProduct(Integer qtdProduct) {
+		this.qtdProduct = qtdProduct;
 	}
 
 	public Status getStatus() {
@@ -69,6 +77,14 @@ public class OrderedItem {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	
+	public Product getProducts() {
+		return products;
+	}
+
+	public void setProducts(Product products) {
+		this.products = products;
 	}
 
 	@Override

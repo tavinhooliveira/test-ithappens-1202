@@ -77,12 +77,12 @@
 					<br>
 
 					<div class="col-ms-1">
-						<label>Quantidade de items: </label><span class="text-primary"
-							th:text="${sale.descricao}"></span>
+						<label>Qtd de items: </label><span class="text-primary"
+							th:text="${sale.qtdProduct}"></span>
 					</div>
 					<div class="col-ms-1">
-						<label>Valor total da venda: </label><span class="text-primary"
-							th:text="${sale.descricao}"></span>
+						<label>Valor total: </label><span class="text-primary"
+							th:text="${sale.total}"></span>
 					</div>
 
 				</div>
@@ -173,9 +173,9 @@
 										<th id="HSData" class="text-left col-md-1">Cod. Pedido</th>
 										<th id="HSData" class="text-left col-md-1">Cod. Produto</th>
 										<th id="HSData" class="text-left col-md-7">Produto</th>
-										<th id="HSData" class="col-md-1">V. Unitário</th>
-										<th id="HSData" class="col-md-1">Quantidade</th>
-										<th id="HSData" class="col-md-1">V. Pedido</th>
+										<th id="HSData" class="text-right col-md-1">V. Unitário</th>
+										<th id="HSData" class="text-right col-md-1">Quantidade</th>
+										<th id="HSData" class="text-right col-md-1">V. Pedido</th>
 										<th id="HSAcao"
 											class="text-center col-md-1 glyphicon glyphicon-trash"></th>
 									</tr>
@@ -183,19 +183,19 @@
 
 								<tbody>
 									<tr th:each="items : ${orderedItems}">
+										<td id="HSData"><span class="text-right "
+											th:text="${items.codigo}"></span></td>
+										<td id="HSData"><span class="text-right "
+											th:text="${items.products.codigo}"></span></td>
 										<td id="HSData"><a class="text-right "
-											th:text="${items.codigo}"></a></td>
-										<td id="HSData"><a class="text-right "
-											th:text="${items.codigo}"></a></td>
-										<td id="HSData"><a class="text-right "
-											th:text="${items.codigo}"></a></td>
-										<td id="HSData"><a class="text-left "
-											th:text="${items.codigo}"></a></td>
-										<td id="HSData"><a class="text-left "
-											th:text="${items.qtdProduct}"></a></td>
-										<td id="HSData"><a class="text-left "
-											th:text="${items.totalValue}"></a></td>
-										<td id="HSacao" class="text-center"><a
+											th:text="| ${items.products.description}, SKU: ${items.products.sku}, codigo de barras: ${items.products.barCode}|"></a></td>
+										<td id="HSData" class="text-right "><span 
+											th:text="${items.products.value}"></span></td>
+										<td id="HSData" class="text-right "><span 
+											th:text="${items.qtdProduct}"></span></td>
+										<td id="HSData" class="text-right"><span 
+											th:text="${items.totalValue}"></span></td>
+										<td id="HSacao" class="text-center"><span
 											class="btn btn-link btn-xs" data-toggle="modal"
 											data-target="#confirmacaoExclusaoHorasModal" title="Excluir"
 											rel="tooltip" data-placement="bottom"> <span

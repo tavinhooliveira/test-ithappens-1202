@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ithappens.model.Branch;
 import com.ithappens.model.Client;
 import com.ithappens.model.OrderedItem;
+import com.ithappens.model.Product;
 import com.ithappens.model.Sale;
 import com.ithappens.model.Status;
 import com.ithappens.model.TypeRecipe;
@@ -24,6 +25,7 @@ import com.ithappens.model.User;
 import com.ithappens.repository.Branchs;
 import com.ithappens.repository.Clients;
 import com.ithappens.repository.OrderedItems;
+import com.ithappens.repository.Products;
 import com.ithappens.repository.Users;
 import com.ithappens.repository.filter.SaleFilter;
 import com.ithappens.service.CadastroSaleService;
@@ -50,6 +52,9 @@ public class SaleController {
 
 	@Autowired
 	private OrderedItems orderedItems;
+	
+	@Autowired
+	private Products products;
 
 	// Cadastro Novo
 	@RequestMapping("/novo")
@@ -77,6 +82,12 @@ public class SaleController {
 	@ModelAttribute("tdbranchs")
 	public List<Branch> tdbranchs() {
 		return branchs.findAll();
+	}
+	
+	// Combo Products
+	@ModelAttribute("tdproducts")
+	public List<Product> tdproducts() {
+		return products.findAll();
 	}
 
 	// Salvar
@@ -128,6 +139,8 @@ public class SaleController {
 		mv.addObject("tdclients", allClients);
 		List<Branch> allBranchs = branchs.findAll();
 		mv.addObject("tdbranchs", allBranchs);
+		List<Product> allProducts = products.findAll();
+		mv.addObject("tdproducts", allProducts);
 		return mv;
 	}
 
@@ -142,6 +155,8 @@ public class SaleController {
 		mv.addObject("tdusers", allUsers);
 		List<Status> allStatus = Arrays.asList(Status.values());
 		mv.addObject("tdstatus", allStatus);
+		List<Product> allProducts = products.findAll();
+		mv.addObject("tdproducts", allProducts);
 		return mv;
 	}
 

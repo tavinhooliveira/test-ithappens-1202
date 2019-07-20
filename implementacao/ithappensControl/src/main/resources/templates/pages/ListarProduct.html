@@ -14,7 +14,7 @@
 			<div class="clearfix" id="btn_Nave">
 				<h1 class="panel-title aw-titulo-panel">Produto</h1>				
 				<!--Novo-->
-				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroProductModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
+				<a class="btn btn-success pull-right" th:href="@{/ithappens/product/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
 					title="Nova Venda"  data-placement="top">
 					<span class="glyphicon glyphicon-plus-sign"></span>Novo
 				</a>

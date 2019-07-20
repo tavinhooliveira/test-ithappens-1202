@@ -16,35 +16,29 @@
 				</div>
 				<div class="modal-body col-md-12">
 					<input type="hidden" name='sales' value='sales' id="sales" />
-					<div class="form-group">
-						<div class="col-md-8">
-							<label for="produtos" class="control-label">Produto:</label> <select
-								class="form-control" name="produtos">
-								<option th:each="produtos : ${tdprodutos}"
-									th:value="${produtos.codigo}" th:text="${produtos.nome}">
+					<div class="form-group col-md-12">
+						<div class="col-md-12">
+							<label for="products" class="control-label">Produtos:</label>
+							<select
+								class="form-control" name="products">
+								<option th:each="products : ${tdproducts}" th:value="${products.codigo}"
+									th:text="| ${products.description} - Codigo: ${products.codigo} - R$: ${products.value}|">
 								</option>
 							</select>
 						</div>
-
-						<div class="col-md-4">
-							<label for="value" class="control-label">Valor unitário</label>
-							<input type="text" class="form-control" id="value" name="value" readonly/>
-						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group col-md-12">
+					
 						<div class="col-md-3">
 							<label for="qtdProduct" class="control-label">Qtd.
 								Produto:</label> <input type="number" class="form-control"
-								id="qtdProduct" name="qtdProduct" />
+								id="qtdProduct" min="1" name="qtdProduct" />
 						</div>
-
-
-						<div class="col-md-5">
-							<label for="status" class="control-label">Status:</label> <select
-								class="form-control" name="status">
-								<option th:each="status : ${tdstatus}" th:value="${status}"
-									th:text="${status.descricao}"></option>
-							</select>
+						
+						<div class="col-md-3">
+							<label for="totalValue" class="control-label">Valor Total:</label>
+							<input type="text" class="form-control"
+								id="totalValue" name="totalValue" readonly="readonly"/>
 						</div>
 
 					</div>
