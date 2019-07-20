@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<section layout:fragment="conteudo">
+
+<div th:replace="/layout/MensagemGeral :: alert"></div>
+
+<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="clearfix" id="btn_Nave">
+				<h1 class="panel-title aw-titulo-panel">Produto</h1>				
+				<!--Novo-->
+				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroProductModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
+					title="Nova Venda"  data-placement="top">
+					<span class="glyphicon glyphicon-plus-sign"></span>Novo
+				</a>
+				
+			</div>
+		</div>
+	<div class="panel-body">
+   		
+	   		<div class="table-responsive">
+		   		<table id="example" class="table table-striped table-bordered dt-responsive table-hover" >
+		   			<thead>
+		   				<tr>
+		   					<th id="RP_responsavel" class="text-left">Código</th>
+		   					<th id="RP_responsavel" class="text-left">SKU</th>
+		   					<th id="RP_responsavel" class="text-left">Produto</th>
+		   					<th id="RP_responsavel" class="text-left">Cod. Barras</th> 
+		   					<th id="RP_responsavel" class="text-left">Valor</th>
+		   					<th id="RP_responsavel" class="text-left">Quantidade</th>  				
+		   					<th id="RP_acao" class="text-center col-md-1">Ação</th>
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="product : ${products}">
+		   					<td id="RP_responsavel" class="text-left" th:text="${product.codigo}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${product.sku}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${product.description}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${product.barCode}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${product.value}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${product.qtdProduct}"></td> 							   						   					
+		   					<td id="RP_acao" class="text-center">
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/product/{codigo}(codigo=${product.codigo})}" 
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/product/delete/{codigo}(codigo=${product.codigo})}"
+		   								title="Excluir" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   					</td>
+		   					
+		   				</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>
+
+</div>
+</section>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}">
+<section layout:fragment="conteudo">
+<div class="modal fade" id="cadastroProductModal" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="cadastroProduct-modal">
+	<div class="modal-dialog">
+		<form class="form-horizontal" method="POST" th:action="@{/ithappens/product}" th:object="${product}">			
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Cadastrar Filiais</h4>
+				</div>				
+				<div class="modal-body">
+			
+				<div class="form-group">			
+					<div class="col-md-12">
+						<label for="description" class="control-label">Produto:</label>
+						<input type="text" class="form-control text-uppercase" id="description" name="description"/>
+					</div>
+					<div class="col-md-12">
+						<label for="sku" class="control-label">Código SKU:</label>
+						<input type="text" class="form-control text-uppercase" id="sku" name="sku"/>
+					</div>
+					<div class="col-md-12">
+						<label for="value" class="control-label">Valor Unitário:</label>
+						<input type="text" class="form-control text-uppercase" id="value" name="value"/>
+					</div>
+					<div class="col-md-12">
+						<label for="barCode" class="control-label">Codigo de Barras:</label>
+						<input type="text" class="form-control text-uppercase" id="barCode" name="barCode"/>
+					</div>
+				</div>	
+										
+				</div>				
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</section>	
+</html>

@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ithappens.repository.Branchs;
 import com.ithappens.repository.Clients;
+import com.ithappens.repository.Products;
 import com.ithappens.repository.Sales;
 import com.ithappens.repository.Users;
 
@@ -29,6 +30,9 @@ public class DashboardController {
 	@Autowired
 	private Branchs branchs;
 	
+	@Autowired
+	private Products products;
+	
 	
 	//Dashboard
 	@RequestMapping
@@ -43,7 +47,7 @@ public class DashboardController {
 		mv.addObject("ContUser", users.findByContUserQTA());
 		
 		mv.addObject("ContBranchs", branchs.findByContBranchsQTA());
-
+		mv.addObject("ContProducts", products.findByContProductsQTA());
 		return mv;
 	}
 	
