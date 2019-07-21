@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div class="modal fade" id="payment" tabindex="-1"
+	data-keyboard="false" data-backdrop="static"
+	th:fragment="payment-modal">
+	<div class="modal-dialog">
+		<form th:attr="data-url-base=@{/ithappens/sale/payment}" method="POST"
+			th:object="${sale}">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Processando Pedido</h4>
+				</div>
+				<div class="modal-body col-md-12">
+					<input type="hidden" name='sales' value='sales' id="sales" />
+					<div class="form-group col-md-12">
+		
+					</div>
+					<div class="form-group col-md-12">
+					
+
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Finalizar Compra</button>
+					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</html>
