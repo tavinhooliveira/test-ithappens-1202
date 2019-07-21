@@ -44,7 +44,7 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 
 
 //ModalExcluir
-$('#confirmacaoExclusaoHorasModal').on('show.bs.modal', function(event) {
+$('#confirmacaoExclusaoOrderedItemsModal').on('show.bs.modal', function(event) {
 	var button = $(event.relatedTarget);
 	
 	var codigo = button.data('codigo');

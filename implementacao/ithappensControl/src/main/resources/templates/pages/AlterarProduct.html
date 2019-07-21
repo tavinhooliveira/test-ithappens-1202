@@ -29,22 +29,22 @@
 					</div>
 					<div class="col-md-2"
 						th:classappend="${#fields.hasErrors('sku')} ? has-error">
-						<label for="sku" class="control-label">SKU:</label> <input
+						<label for="sku" class="control-label">SKU*: padrão XX9999</label> <input
 							type="text" class="form-control text-uppercase"
-							placeholder="Codigo SKU" id="sku" th:field="*{sku}" />
+							placeholder="XX9999" id="sku" th:field="*{sku}" />
 					</div>
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('description')} ? has-error">
 						<label for="description" class="control-label">Descrição:</label> <input
 							type="text" class="form-control text-uppercase"
-							placeholder="Nome do Usuário" id="description"
+							placeholder="Descrição" id="description"
 							th:field="*{description}" />
 					</div>
 					<div class="col-md-2"
 						th:classappend="${#fields.hasErrors('value')} ? has-error">
 						<label for="value" class="control-label">Valor Unitário:</label> <input
 							type="text" class="form-control text-uppercase"
-							placeholder="Nome do Usuário" id="value" th:field="*{value}" />
+							placeholder="0,0" id="value" th:field="*{value}" />
 					</div>
 				</div>
 				<div class="form-group col-md-12">
