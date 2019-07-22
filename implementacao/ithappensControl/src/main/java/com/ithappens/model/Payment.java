@@ -2,7 +2,7 @@ package com.ithappens.model;
 
 public enum Payment {
 	
-		AVISTA("avista"), BOLETO("BOLETO"), CARTAO("cartao");
+		AVISTA("avista"), BOLETO("boleto"), CARTAO("cartao");
 
 		private String descricao;
 

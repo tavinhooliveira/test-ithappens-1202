@@ -3,9 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<div class="modal fade" id="payment" tabindex="-1"
-	data-keyboard="false" data-backdrop="static"
-	th:fragment="payment-modal">
+<div class="modal fade" id="payment" tabindex="-1" data-keyboard="false"
+	data-backdrop="static" th:fragment="payment-modal">
 	<div class="modal-dialog">
 		<form th:attr="data-url-base=@{/ithappens/sale/payment}" method="POST"
 			th:object="${sale}">
@@ -16,17 +15,37 @@
 				</div>
 				<div class="modal-body col-md-12">
 					<input type="hidden" name='sales' value='sales' id="sales" />
-					<div class="form-group col-md-12">
-		
+					<div class="form-group col-md-6">
+						<div class="col-ms-1">
+							<label>Cod. Pedido: </label><span class="text-primary"
+								th:text="${sale.codigo}"></span>
+						</div>
+						<div class="col-ms-1">
+							<label>Status: </label><span class="text-primary"
+								th:text="${sale.status}"></span>
+						</div>
+						<div class="col-ms-1">
+							<label>Qtd de items: </label><span class="text-primary"
+								th:text="${sale.qtdProduct}"></span>
+						</div>
+						<div class="col-ms-1">
+							<label>Valor total: </label><span class="text-primary"
+								th:text="|R$ ${sale.total}|"></span>
+						</div>
+						
 					</div>
-					<div class="form-group col-md-12">
-					
-
+					<div class="form-group col-md-6">
+						<label for="payment" class="control-label">Forma de pagamento:</label> <select
+							class="form-control" name="payment" th:field="*{payment}">
+							<option th:each="payment : ${tdpayment}"
+								th:value="${payment}" th:text="${payment.descricao}"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Finalizar Compra</button>
+					<button type="submit" class="btn btn-primary">Finalizar
+						Compra</button>
 					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
 				</div>
 			</div>

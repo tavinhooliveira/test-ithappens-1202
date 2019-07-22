@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ithappens.model.Branch;
 import com.ithappens.model.Client;
 import com.ithappens.model.OrderedItem;
+import com.ithappens.model.Payment;
 import com.ithappens.model.Product;
 import com.ithappens.model.Sale;
 import com.ithappens.model.Status;
@@ -127,6 +128,13 @@ public class SaleController {
 	public List<Status> todasSalesStatus() {
 		return Arrays.asList(Status.values());
 	}
+	
+	// PesquisaFormapagamento
+	@ModelAttribute("formPayment")
+	public List<Payment> formPayment() {
+		return Arrays.asList(Payment.values());
+	}
+	
 
 	// Editar
 	@RequestMapping("{codigo}")
@@ -141,6 +149,7 @@ public class SaleController {
 		mv.addObject("tdbranchs", allBranchs);
 		List<Product> allProducts = products.findAll();
 		mv.addObject("tdproducts", allProducts);
+		mv.addObject("ContProducts", products.findByContProductsQTA());
 		return mv;
 	}
 
@@ -157,6 +166,9 @@ public class SaleController {
 		mv.addObject("tdstatus", allStatus);
 		List<Product> allProducts = products.findAll();
 		mv.addObject("tdproducts", allProducts);
+		mv.addObject("ContProducts", products.findByContProductsQTA());
+		List<Payment> allPayment = Arrays.asList(Payment.values());
+		mv.addObject("tdpayment", allPayment);
 		return mv;
 	}
 

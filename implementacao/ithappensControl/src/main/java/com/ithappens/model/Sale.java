@@ -64,6 +64,9 @@ public class Sale {
 	public void setOrderedItems(List<OrderedItem> orderedItems) {
 		this.orderedItems = orderedItems;
 	}
+	
+	@Enumerated(EnumType.STRING)
+	private Payment payment;
 
 	@Enumerated(EnumType.STRING)
 	private TypeRecipe tipo;
@@ -155,6 +158,14 @@ public class Sale {
 
 	public void setQtdProduct(Integer qtdProduct) {
 		this.qtdProduct = qtdProduct;
+	}
+	
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
 	@Override

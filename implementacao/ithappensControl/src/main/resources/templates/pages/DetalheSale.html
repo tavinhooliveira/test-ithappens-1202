@@ -72,18 +72,7 @@
 					<a class="btn btn-default pull-right"> <span
 						class="glyphicon glyphicon-print" title="Imprimir" rel="tooltip"
 						data-placement="bottom" onclick="cont();"></span>
-					</a><br>
-					<br>
-					<br>
-
-					<div class="col-ms-1">
-						<label>Qtd de items: </label><span class="text-primary"
-							th:text="${sale.qtdProduct}"></span>
-					</div>
-					<div class="col-ms-1">
-						<label>Valor total: </label><span class="text-primary"
-							th:text="${sale.total}"></span>
-					</div>
+					</a><br> <br>
 
 				</div>
 				<div class="col-ms-1">
@@ -109,13 +98,7 @@
 			</div>
 
 			<div id=" btns_detalhe aw-graph-box" class="col-md-12 pull-left">
-				<!--Salvar e Calcular-->
-				<a class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')"
-					th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
-					title="Editar" rel="tooltip" data-placement="bottom"> <span
-					class="glyphicon glyphicon-pencil"></span><span> Calcular e Salvar</span>
-				</a>
-
+				
 				<!--Editar-->
 				<a class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN')"
 					th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
@@ -131,12 +114,12 @@
 				</a>
 
 				<!--Processar Venda-->
-				<a class="btn btn-default pull-right"
+				<a  th:if="${not  #lists.isEmpty(orderedItems)}" class="btn btn-success pull-right"
+					data-toggle="modal" data-target="#payment"
 					sec:authorize="hasRole('ROLE_ADMIN')"
-					th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
-					title="Editar" rel="tooltip" data-placement="bottom"> <span
-					class="glyphicon glyphicon-pencil text"></span><span> Processar
-						Venda</span>
+					title="Processar pedido" rel="tooltip" data-placement="bottom"> <span
+					class="glyphicon glyphicon-floppy-saved"></span><span>
+						Processar Venda</span>
 				</a>
 			</div>
 		</div>
@@ -150,18 +133,28 @@
 						class="text-label"> Itens do Pedido</label></a></li>
 			</ul>
 			<div class="tab-content">
-
 				<div class="tab-pane active" id="tab1">
 					<div class="panel-body">
 						<div class="panel">
 							<!--Pedidos-->
-							<a class="btn btn-success" data-toggle="modal"
-								data-target="#addOrderedItems"
+							<a th:if="${{ContProducts}} > 0" class="btn btn-success"
+								data-toggle="modal" data-target="#addOrderedItems"
 								th:attr="data-codigo=${sale.codigo}"
 								title="Lançar Pedidos nessa venda" rel="tooltip"
 								data-placement="bottom"> <span
 								class="glyphicon glyphicon-plus"></span> Add Pedidos
 							</a>
+
+							<div th:if="${{ContProducts}} == 0" style="margin: 20px">
+								<span style="color: red">Para adicionar pedidos a venda é
+									nescessário existir produtos!</span> <span> Deseja cadastrar
+									produtos? </span> <a class="btn btn-default"
+									sec:authorize="hasRole('ROLE_ADMIN')"
+									th:href="@{/ithappens/product}" title="Editar" rel="tooltip"
+									data-placement="bottom"> <span class="">Cadastar
+										Produto</span>
+								</a>
+							</div>
 						</div>
 
 						<!-- tabelas de Pedidoss BEGIN -->
@@ -189,19 +182,18 @@
 											th:text="${items.products.codigo}"></span></td>
 										<td id="HSData"><a class="text-right "
 											th:text="| ${items.products.description}, SKU: ${items.products.sku}, codigo de barras: ${items.products.barCode}|"></a></td>
-										<td id="HSData" class="text-right "><span 
-											th:text="${items.products.value}"></span></td>
-										<td id="HSData" class="text-right "><span 
+										<td id="HSData" class="text-right "><span
+											th:text="|R$ ${items.products.value}|"></span></td>
+										<td id="HSData" class="text-right "><span
 											th:text="${items.qtdProduct}"></span></td>
-										<td id="HSData" class="text-right"><span 
-											th:text="${items.totalValue}"></span></td>
+										<td id="HSData" class="text-right"><span
+											th:text="|R$ ${items.totalValue} |"></span></td>
 										<td id="HSacao" class="text-center"><span
 											class="btn btn-link btn-xs" data-toggle="modal"
-											data-target="#confirmacaoExclusaoOrderedItemsModal" title="Excluir"
-											th:attr="data-codigo=${items.codigo}"
+											data-target="#confirmacaoExclusaoOrderedItemsModal"
+											title="Excluir" th:attr="data-codigo=${items.codigo}"
 											rel="tooltip" data-placement="bottom"> <span
-												class="glyphicon glyphicon-trash"></span>
-										</a></td>
+												class="glyphicon glyphicon-trash"></span> </a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -216,11 +208,10 @@
 			</div>
 		</section>
 
-		<div
-			th:replace="pages/CadastroOrderedItemsModal :: addOrderedItems-modal"></div>
+		<div th:replace="pages/CadastroOrderedItemsModal :: addOrderedItems-modal"></div>
 		<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
-		<div
-			th:replace="layout/DialogoConfirmacaoOrderedItemsExclusao :: excluir-orderedItems-modal"></div>
+		<div th:replace="pages/PaymentModal :: payment-modal"></div>
+		<div th:replace="layout/DialogoConfirmacaoOrderedItemsExclusao :: excluir-orderedItems-modal"></div>
 	</div>
 
 </section>
