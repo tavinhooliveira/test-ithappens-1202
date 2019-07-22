@@ -18,15 +18,15 @@ public class OrderedItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private BigDecimal totalValue;
-	
+
 	private Integer qtdProduct;
 
 	@ManyToOne
 	@JoinColumn(name = "cd_sale")
 	private Sale sales;
-	
+
 	@ManyToOne
 	@NotNull(message = "O Produto é obrigatório")
 	@JoinColumn(name = "codigo_products")
@@ -78,7 +78,7 @@ public class OrderedItem {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
 	public Product getProducts() {
 		return products;
 	}

@@ -18,72 +18,61 @@ import com.ithappens.repository.Branchs;
 @Controller
 @RequestMapping("/ithappens/branch")
 public class BranchController {
-	
+
 	private static final String CADASTRO_BRANCH_VIEW = "/pages/AlterarBranch";
 	private static final String BRANCH_VIEW = "/pages/ListarBranch";
 
-	
 	@Autowired
 	public Branchs branchs;
-	
-	
-	
+
 	// Cadastro Novo
-		@RequestMapping("/novo")
-		public ModelAndView novo() {
-			ModelAndView mv = new ModelAndView(CADASTRO_BRANCH_VIEW);
-			mv.addObject(new Branch());
-			return mv;
+	@RequestMapping("/novo")
+	public ModelAndView novo() {
+		ModelAndView mv = new ModelAndView(CADASTRO_BRANCH_VIEW);
+		mv.addObject(new Branch());
+		return mv;
+	}
+
+	// list
+	@RequestMapping
+	public ModelAndView lista() {
+		List<Branch> allBranchs = branchs.findAll();
+		ModelAndView mv = new ModelAndView(BRANCH_VIEW);
+		mv.addObject(new Branch());
+		mv.addObject("branchs", allBranchs);
+		return mv;
+	}
+
+	// Salvar
+	@RequestMapping(method = RequestMethod.POST)
+	public String salvar(@Validated Branch branch, Errors errors, RedirectAttributes attributes) {
+		if (errors.hasErrors()) {
+			return CADASTRO_BRANCH_VIEW;
 		}
-		
-		// list
-		@RequestMapping
-		public ModelAndView lista() {
-			List<Branch> allBranchs = branchs.findAll();
-			ModelAndView mv = new ModelAndView(BRANCH_VIEW);
-			mv.addObject(new Branch());
-			mv.addObject("branchs", allBranchs);
-			return mv;
-		}
-		
-		
-		// Salvar
-		@RequestMapping(method = RequestMethod.POST)
-		public String salvar(@Validated Branch branch, Errors errors,
-				RedirectAttributes attributes) {
-			if (errors.hasErrors()) {
-				return CADASTRO_BRANCH_VIEW;
-			}
-			try {
-				branchs.save(branch);
-				attributes.addFlashAttribute("mensagem","Filial Salvo com sucesso!");
-				return "redirect:/ithappens/branch";
-			} catch (IllegalArgumentException e) {
-				return CADASTRO_BRANCH_VIEW;
-			}
-		}
-		
-				
-		
-		// Editar
-		@RequestMapping("{codigo}")
-		public ModelAndView edicao(@PathVariable("codigo") Branch branch) {
-			ModelAndView mv = new ModelAndView(CADASTRO_BRANCH_VIEW);
-			mv.addObject(branch);
-			return mv;
-		}
-		
-		
-		// Excluir
-		@RequestMapping(value = "/delete/{codigo}")
-		public String excluir(@PathVariable Long codigo,
-				@Validated Branch branch, Errors errors,
-				RedirectAttributes attributes) {
-			branchs.delete(codigo);
-			attributes.addFlashAttribute("mensagem","Filial excluído com sucesso!");
+		try {
+			branchs.save(branch);
+			attributes.addFlashAttribute("mensagem", "Filial Salvo com sucesso!");
 			return "redirect:/ithappens/branch";
+		} catch (IllegalArgumentException e) {
+			return CADASTRO_BRANCH_VIEW;
 		}
-	
-	
+	}
+
+	// Editar
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") Branch branch) {
+		ModelAndView mv = new ModelAndView(CADASTRO_BRANCH_VIEW);
+		mv.addObject(branch);
+		return mv;
+	}
+
+	// Excluir
+	@RequestMapping(value = "/delete/{codigo}")
+	public String excluir(@PathVariable Long codigo, @Validated Branch branch, Errors errors,
+			RedirectAttributes attributes) {
+		branchs.delete(codigo);
+		attributes.addFlashAttribute("mensagem", "Filial excluído com sucesso!");
+		return "redirect:/ithappens/branch";
+	}
 
 }

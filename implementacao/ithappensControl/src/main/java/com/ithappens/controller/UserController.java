@@ -46,22 +46,20 @@ public class UserController {
 
 	// Salvar Usuário
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated User user, Sale sale, Errors errors,
-			RedirectAttributes attributes) {
+	public String salvar(@Validated User user, Sale sale, Errors errors, RedirectAttributes attributes) {
 		attributes.addAttribute(sale);
 		if (errors.hasErrors()) {
 			return CADASTRO_USER_VIEW;
 		}
 		try {
 			users.save(user);
-			attributes.addFlashAttribute("mensagem","Usuário Salvo com sucesso!");
+			attributes.addFlashAttribute("mensagem", "Usuário Salvo com sucesso!");
 			return "redirect:/ithappens/user";
 		} catch (IllegalArgumentException e) {
 			return CADASTRO_USER_VIEW;
 		}
 	}
-	
-	
+
 	// Editar
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") User user) {
@@ -69,16 +67,13 @@ public class UserController {
 		mv.addObject(user);
 		return mv;
 	}
-	
-	
+
 	// Excluir
 	@RequestMapping(value = "/delete/{codigo}")
-	public String excluir(@PathVariable Long codigo,
-			@Validated User user, Errors errors,
+	public String excluir(@PathVariable Long codigo, @Validated User user, Errors errors,
 			RedirectAttributes attributes) {
 		users.delete(codigo);
-		attributes.addFlashAttribute("mensagem",
-				"Usuário excluído com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Usuário excluído com sucesso!");
 		return "redirect:/ithappens/user";
 	}
 

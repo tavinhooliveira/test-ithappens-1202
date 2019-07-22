@@ -19,112 +19,87 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import com.ithappens.validation.SKU;
 
-
 @Entity
 public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	@SKU
 	@Column(name = "sku", unique = true)
 	@NotBlank(message = "SKU é obrigatório")
 	private String sku;
-	
+
 	@NotBlank(message = "A descrição é obrigatória")
 	@Size(min = 1, max = 50, message = "O tamanho da descrição deve ser entre 1 e 50")
 	private String description;
-	
+
 	private String barCode;
-	
+
 	@DecimalMin("0.01")
 	@DecimalMax(value = "9999999.99", message = "O Valor do produto deve ser menor que R$9.999.999,99")
-	private BigDecimal value;
-	
+	private BigDecimal value = BigDecimal.ZERO;
+
 	private Integer qtdProduct;
-	
+
 	@OneToMany(mappedBy = "products")
 	private List<OrderedItem> orderedItems;
-		
-	@PrePersist	
+
+	@PrePersist
 	@PreUpdate
-	private void prePersistUpdate(){
+	private void prePersistUpdate() {
 		sku = sku.toUpperCase();
 	}
-	
-	
 
 	public Long getCodigo() {
 		return codigo;
 	}
 
-
-
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-
-
 
 	public String getSku() {
 		return sku;
 	}
 
-
-
 	public void setSku(String sku) {
 		this.sku = sku;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
 
 	public String getBarCode() {
 		return barCode;
 	}
 
-
-
 	public void setBarCode(String barCode) {
 		this.barCode = barCode;
 	}
-
-
 
 	public BigDecimal getValue() {
 		return value;
 	}
 
-
-
 	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
-
-
 
 	public Integer getQtdProduct() {
 		return qtdProduct;
 	}
 
-
-
 	public void setQtdProduct(Integer qtdProduct) {
 		this.qtdProduct = qtdProduct;
 	}
-	
+
 	public List<OrderedItem> getOrderedItems() {
 		return orderedItems;
 	}
@@ -132,7 +107,6 @@ public class Product {
 	public void setOrderedItems(List<OrderedItem> orderedItems) {
 		this.orderedItems = orderedItems;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -158,8 +132,5 @@ public class Product {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }

@@ -53,7 +53,7 @@ public class SaleController {
 
 	@Autowired
 	private OrderedItems orderedItems;
-	
+
 	@Autowired
 	private Products products;
 
@@ -84,7 +84,7 @@ public class SaleController {
 	public List<Branch> tdbranchs() {
 		return branchs.findAll();
 	}
-	
+
 	// Combo Products
 	@ModelAttribute("tdproducts")
 	public List<Product> tdproducts() {
@@ -128,13 +128,12 @@ public class SaleController {
 	public List<Status> todasSalesStatus() {
 		return Arrays.asList(Status.values());
 	}
-	
+
 	// PesquisaFormapagamento
 	@ModelAttribute("formPayment")
 	public List<Payment> formPayment() {
 		return Arrays.asList(Payment.values());
 	}
-	
 
 	// Editar
 	@RequestMapping("{codigo}")

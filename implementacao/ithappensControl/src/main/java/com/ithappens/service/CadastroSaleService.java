@@ -12,33 +12,29 @@ import com.ithappens.repository.filter.SaleFilter;
 
 @Service
 public class CadastroSaleService {
-	
+
 	@Autowired
 	private Sales sales;
 
-
-	//Metodo Salvar
+	// Metodo Salvar
 	public void salvar(Sale sale) {
 		try {
 			sales.save(sale);
 		} catch (DataIntegrityViolationException e) {
 			throw new IllegalArgumentException("Formato de data inválido");
 		}
-		
+
 	}
-		
-	
-	//Metodo Listar
-	public List<Sale>filtrar(SaleFilter filtro) {
+
+	// Metodo Listar
+	public List<Sale> filtrar(SaleFilter filtro) {
 		String descricao = filtro.getDescricao() == null ? "%" : filtro.getDescricao();
 		return sales.findByDescricaoContaining(descricao);
 	}
-	
-	//Metodo Excluir
-	public void excluir(Long codigo){
-		sales.delete(codigo);		
+
+	// Metodo Excluir
+	public void excluir(Long codigo) {
+		sales.delete(codigo);
 	}
-	
-	
-	
+
 }

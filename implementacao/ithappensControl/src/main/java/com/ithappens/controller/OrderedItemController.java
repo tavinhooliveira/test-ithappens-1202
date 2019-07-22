@@ -17,6 +17,8 @@ import com.ithappens.model.Sale;
 import com.ithappens.model.User;
 import com.ithappens.repository.OrderedItems;
 import com.ithappens.repository.Users;
+import com.ithappens.service.OrderedItemService;
+import com.ithappens.service.exception.ProductsStoqueException;
 
 @Controller
 @RequestMapping("/ithappens/orderedItems")
@@ -31,15 +33,19 @@ public class OrderedItemController {
 	@Autowired
 	private Users users;
 
+	@Autowired
+	private OrderedItemService orderedItemService;
+
 	// Salvar
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated OrderedItem orderedItem, Sale sale, Errors errors, RedirectAttributes attributes) {
+	public String salvar(@Validated OrderedItem orderedItem, Sale sale, Errors errors, RedirectAttributes attributes)
+			throws ProductsStoqueException {
 		attributes.addAttribute(sale);
 		if (errors.hasErrors()) {
 			return "redirect:/ithappens/detalhes/" + orderedItem.getSales().getCodigo();
 		}
 		try {
-			orderedItems.save(orderedItem);
+			orderedItemService.orderProductSave(orderedItem);
 			attributes.addFlashAttribute("mensagem", "Pedido adicionado a venda!");
 			return "redirect:/ithappens/detalhes/" + orderedItem.getSales().getCodigo();
 		} catch (IllegalArgumentException e) {

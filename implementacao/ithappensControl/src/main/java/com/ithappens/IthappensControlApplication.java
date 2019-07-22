@@ -17,22 +17,20 @@ public class IthappensControlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(IthappensControlApplication.class, args);
 	}
-	
+
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
 	}
-	
+
 	@Configuration
 	public static class MvcConfig extends WebMvcConfigurerAdapter {
-		
+
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
 			registry.addRedirectViewController("/", "/ithappens/dashboard");
 		}
-		
+
 	}
-	
-	
-	
+
 }

@@ -26,9 +26,9 @@ public class Sale {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private BigDecimal total = BigDecimal.ZERO;
-	
+
 	private Integer qtdProduct;
 
 	@Size(max = 700, message = "A Descrição não pode conter mais de 700 caracteres")
@@ -64,7 +64,7 @@ public class Sale {
 	public void setOrderedItems(List<OrderedItem> orderedItems) {
 		this.orderedItems = orderedItems;
 	}
-	
+
 	@Enumerated(EnumType.STRING)
 	private Payment payment;
 
@@ -134,8 +134,6 @@ public class Sale {
 		this.branchs = branchs;
 	}
 
-
-
 	public Date getDataOrder() {
 		return dataOrder;
 	}
@@ -143,7 +141,7 @@ public class Sale {
 	public void setDataOrder(Date dataOrder) {
 		this.dataOrder = dataOrder;
 	}
-	
+
 	public BigDecimal getTotal() {
 		return total;
 	}
@@ -159,7 +157,7 @@ public class Sale {
 	public void setQtdProduct(Integer qtdProduct) {
 		this.qtdProduct = qtdProduct;
 	}
-	
+
 	public Payment getPayment() {
 		return payment;
 	}

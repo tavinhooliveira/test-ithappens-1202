@@ -30,7 +30,12 @@
 								class="pull-right text-info">Total:<b
 								th:text="${{saleContTotal}}"></b></span>
 						</div>
-						<div class="aw-box__value">Vendas</div>
+						<div class="aw-box__value">Vendas 
+							<small th:if="${{totalValueOrderedItem}} != 'null'" style="font-size: 10px" 
+								th:text="| = R$ ${{totalValueOrderedItem}} |">
+							</small>
+						</div>
+						
 						<small><span class="text-success">Ativo:</span><b
 							th:text="${{saleContAtivo}}"></b> | <span class="text-warning">Cancelado:</span><b
 							th:text="${{saleContCancelado}}"></b> | <span class="text-info">Processando:</span><b

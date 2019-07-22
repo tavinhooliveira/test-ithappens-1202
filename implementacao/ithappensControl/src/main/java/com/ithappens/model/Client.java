@@ -10,60 +10,53 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Client {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private String nome;
-	
+
 	private String email;
-	
+
 	@OneToMany(mappedBy = "clients")
 	private List<Sale> sales;
-
 
 	public Long getCodigo() {
 		return codigo;
 	}
 
-
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public List<Sale> getSales() {
 		return sales;
 	}
 
-
 	public void setSales(List<Sale> sales) {
 		this.sales = sales;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -74,7 +67,9 @@ public class Client {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -93,8 +88,5 @@ public class Client {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

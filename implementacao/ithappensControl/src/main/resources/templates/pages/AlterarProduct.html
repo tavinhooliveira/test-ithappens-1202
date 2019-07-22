@@ -58,8 +58,8 @@
 	
 					<div class="col-md-2"
 						th:classappend="${#fields.hasErrors('qtdProduct')} ? has-error">
-						<label for="qtdProduct" class="control-label">Quantidade:</label> <input
-							type="text" class="form-control text-uppercase" placeholder="0"
+						<label for="qtdProduct" class="control-label">Qtd. Estoque:</label> <input
+							type="number" class="form-control text-uppercase" min="1" 
 							id="qtdProduct" th:field="*{qtdProduct}" />
 					</div>
 				</div>

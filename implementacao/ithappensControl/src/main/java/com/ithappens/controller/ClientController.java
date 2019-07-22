@@ -16,18 +16,16 @@ import com.ithappens.model.Client;
 import com.ithappens.model.User;
 import com.ithappens.repository.Clients;
 
-
 @Controller
 @RequestMapping("/ithappens/client")
 public class ClientController {
-	
+
 	private static final String CADASTRO_CLIENT_VIEW = "/pages/AlterarClient";
 	private static final String CLIENT_VIEW = "/pages/ListarClient";
-	
+
 	@Autowired
-	private Clients	clients;
-	
-	
+	private Clients clients;
+
 	// Cadastro Novo
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
@@ -35,7 +33,7 @@ public class ClientController {
 		mv.addObject(new Client());
 		return mv;
 	}
-	
+
 	// list
 	@RequestMapping
 	public ModelAndView lista() {
@@ -45,26 +43,22 @@ public class ClientController {
 		mv.addObject("clients", allClients);
 		return mv;
 	}
-	
-	// Salvar 
+
+	// Salvar
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated Client client, Errors errors,
-			RedirectAttributes attributes) {
+	public String salvar(@Validated Client client, Errors errors, RedirectAttributes attributes) {
 		if (errors.hasErrors()) {
 			return CADASTRO_CLIENT_VIEW;
 		}
 		try {
 			clients.save(client);
-			attributes.addFlashAttribute("mensagem",
-					"Cliente Salvo com sucesso!");
+			attributes.addFlashAttribute("mensagem", "Cliente Salvo com sucesso!");
 			return "redirect:/ithappens/client";
 		} catch (IllegalArgumentException e) {
 			return CADASTRO_CLIENT_VIEW;
 		}
 	}
-	
-	
-	
+
 	// Editar
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") Client client) {
@@ -72,18 +66,14 @@ public class ClientController {
 		mv.addObject(client);
 		return mv;
 	}
-	
-	
+
 	// Excluir
 	@RequestMapping(value = "/delete/{codigo}")
-	public String excluir(@PathVariable Long codigo,
-			@Validated Client client, Errors errors,
+	public String excluir(@PathVariable Long codigo, @Validated Client client, Errors errors,
 			RedirectAttributes attributes) {
 		clients.delete(codigo);
-		attributes.addFlashAttribute("mensagem",
-				"Cliente excluído com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Cliente excluído com sucesso!");
 		return "redirect:/ithappens/client";
 	}
-	
 
 }

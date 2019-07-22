@@ -1,6 +1,5 @@
 package com.ithappens.controller;
 
-
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -14,8 +13,8 @@ public class SegurancaController {
 		if (user != null) {
 			return "redirect:/ithappens";
 		}
-		
+
 		return "login";
 	}
-	
+
 }

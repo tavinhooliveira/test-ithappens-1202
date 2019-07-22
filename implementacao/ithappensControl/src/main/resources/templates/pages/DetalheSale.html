@@ -57,7 +57,7 @@
 				<div class="col-ms-1">
 					<label>Status: </label><strong><span class="text-primary"
 						th:text="${sale.status.descricao}"
-						th:classappend="${sale.open ? 'text-success' : 'text'}"></span></strong>
+						th:classappend="${sale.open ? 'text-success' : 'text'}" style="text-transform:uppercase"></span></strong>
 				</div>
 
 				<div class="col-ms-1">
@@ -142,7 +142,7 @@
 								th:attr="data-codigo=${sale.codigo}"
 								title="Lançar Pedidos nessa venda" rel="tooltip"
 								data-placement="bottom"> <span
-								class="glyphicon glyphicon-plus"></span> Add Pedidos
+								class="glyphicon glyphicon-shopping-cart"></span> Add Pedidos
 							</a>
 
 							<div th:if="${{ContProducts}} == 0" style="margin: 20px">
@@ -165,17 +165,19 @@
 									<tr>
 										<th id="HSData" class="text-left col-md-1">Cod. Pedido</th>
 										<th id="HSData" class="text-left col-md-1">Cod. Produto</th>
-										<th id="HSData" class="text-left col-md-7">Produto</th>
+										<th id="HSData" class="text-left col-md-5">Produto</th>
+										<th id="HSData" class="text-center col-md-1">Status</th>
 										<th id="HSData" class="text-right col-md-1">V. Unitário</th>
 										<th id="HSData" class="text-right col-md-1">Quantidade</th>
 										<th id="HSData" class="text-right col-md-1">V. Pedido</th>
-										<th id="HSAcao"
-											class="text-center col-md-1 glyphicon glyphicon-trash"></th>
+										<th id="HSAcao" class="text-center col-md-1 glyphicon glyphicon-remove"></th>
+										<th id="HSAcao" class="text-center col-md-1 glyphicon glyphicon-trash"></th>
+											
 									</tr>
 								</thead>
 
 								<tbody>
-									<tr th:each="items : ${orderedItems}">
+									<tr th:each="items : ${orderedItems}" th:if="${sale.codigo == items.sales.codigo}">
 										<td id="HSData"><span class="text-right "
 											th:text="${items.codigo}"></span></td>
 										<td id="HSData"><span class="text-right "
@@ -183,13 +185,23 @@
 										<td id="HSData"><a class="text-right "
 											th:text="| ${items.products.description}, SKU: ${items.products.sku}, codigo de barras: ${items.products.barCode}|"></a></td>
 										<td id="HSData" class="text-right "><span
+											th:text="${items.status}"></span></td>
+										<td id="HSData" class="text-right "><span
 											th:text="|R$ ${items.products.value}|"></span></td>
 										<td id="HSData" class="text-right "><span
-											th:text="${items.qtdProduct}"></span></td>
+											th:text="${items.qtdProduct}"></span></td>											
 										<td id="HSData" class="text-right"><span
 											th:text="|R$ ${items.totalValue} |"></span></td>
+											
 										<td id="HSacao" class="text-center"><span
-											class="btn btn-link btn-xs" data-toggle="modal"
+										class="btn btn-danger btn-xs" data-toggle="modal"
+										data-target=""
+										title="Cancelar" th:attr="data-codigo=${items.codigo}"
+										rel="tooltip" data-placement="bottom"> <span
+											class="glyphicon glyphicon-remove"></span> </a>
+										</td>
+										<td id="HSacao" class="text-center"><span
+											class="btn btn-default btn-xs" data-toggle="modal"
 											data-target="#confirmacaoExclusaoOrderedItemsModal"
 											title="Excluir" th:attr="data-codigo=${items.codigo}"
 											rel="tooltip" data-placement="bottom"> <span

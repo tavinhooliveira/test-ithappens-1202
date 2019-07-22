@@ -1,17 +1,17 @@
 package com.ithappens.model;
 
 public enum Payment {
-	
-		AVISTA("avista"), BOLETO("boleto"), CARTAO("cartao");
 
-		private String descricao;
+	AVISTA("avista"), BOLETO("boleto"), CARTAO("cartao");
 
-		Payment(String descricao) {
-			this.descricao = descricao;
-		}
+	private String descricao;
 
-		public String getDescricao() {
-			return descricao;
-		}
+	Payment(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
 
 }

@@ -10,17 +10,16 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Branch {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private String nome;
 	private String city;
 	private String address;
 	private String cnpj;
-	
-	
+
 	@OneToMany(mappedBy = "branchs")
 	private List<Sale> sales;
 
@@ -39,7 +38,7 @@ public class Branch {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-		
+
 	public List<Sale> getSales() {
 		return sales;
 	}
@@ -96,7 +95,5 @@ public class Branch {
 			return false;
 		return true;
 	}
-	
-	
 
 }
