@@ -73,6 +73,16 @@
 						class="glyphicon glyphicon-print" title="Imprimir" rel="tooltip"
 						data-placement="bottom" onclick="cont();"></span>
 					</a><br> <br>
+					<div class="pull-right alert detalhes">			
+						<div class="col-ms-6 ">
+								<label>Quantidade dos Items: </label><span class="text-primary"
+									th:text="${sale.qtdProduct}"></span>
+						</div>
+						<div class="col-ms-6">
+								<label>Valor Total: </label><span class="text-primary"
+									th:text="${sale.total}"></span>
+						</div>
+					</div>
 
 				</div>
 				<div class="col-ms-1">
@@ -96,7 +106,7 @@
 						th:text="${sale.descricao}"></span>
 				</div>
 			</div>
-
+			
 			<div id=" btns_detalhe aw-graph-box" class="col-md-12 pull-left">
 				
 				<!--Editar-->
@@ -112,6 +122,9 @@
 					title="Excluir" rel="tooltip" data-placement="bottom"> <span
 					class="glyphicon glyphicon-trash"></span><span> Excluir</span>
 				</a>
+				
+				
+				
 
 				<!--Processar Venda-->
 				<a  th:if="${not  #lists.isEmpty(orderedItems)}" class="btn btn-success pull-right"

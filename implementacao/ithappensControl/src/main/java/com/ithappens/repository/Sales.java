@@ -22,5 +22,5 @@ public interface Sales extends JpaRepository<Sale, Long> {
 
 	@Query("SELECT count(codigo) FROM Sale where status = 'PROCESSADO'")
 	public List<Sale> findBySaleProcessandoQTA();
-
+	
 }

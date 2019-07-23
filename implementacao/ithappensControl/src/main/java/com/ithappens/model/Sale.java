@@ -29,7 +29,7 @@ public class Sale {
 
 	private BigDecimal total = BigDecimal.ZERO;
 
-	private Integer qtdProduct;
+	private Integer qtdProduct = 0;
 
 	@Size(max = 700, message = "A Descrição não pode conter mais de 700 caracteres")
 	private String descricao;

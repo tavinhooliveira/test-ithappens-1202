@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ithappens.model.Product;
 import com.ithappens.repository.Products;
 
+import jersey.repackaged.com.google.common.collect.Lists;
+
 @Controller
 @RequestMapping("/ithappens/product")
 public class ProductController {
@@ -36,7 +38,7 @@ public class ProductController {
 	// list
 	@RequestMapping
 	public ModelAndView lista() {
-		List<Product> allProducts = products.findAll();
+		List<Product> allProducts = Lists.newArrayList(products.findAll());
 		ModelAndView mv = new ModelAndView(PRODUCT_VIEW);
 		mv.addObject(new Product());
 		mv.addObject("products", allProducts);

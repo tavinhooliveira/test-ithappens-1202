@@ -167,7 +167,8 @@ public class SaleController {
 		mv.addObject("tdproducts", allProducts);
 		mv.addObject("ContProducts", products.findByContProductsQTA());
 		List<Payment> allPayment = Arrays.asList(Payment.values());
-		mv.addObject("tdpayment", allPayment);
+		mv.addObject("tdpayment", allPayment);		
+		mv.addObject("totalValueOrderedItemSale", orderedItems.sumTotal(sale.getCodigo()));
 		return mv;
 	}
 
